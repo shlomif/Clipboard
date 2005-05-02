@@ -1,6 +1,6 @@
 package Clipboard;
 use Spiffy -Base;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 our $driver;
 
 sub copy { $driver->copy(@_); }

@@ -1,7 +1,10 @@
 SYNOPSIS
         use Clipboard;
         print Clipboard->paste;
-        Clipboard->copy(scalar <STDIN>);
+        Clipboard->copy($foo);
+
+        # Clipboard->cut() is an alias for copy(), but the less-preferred
+        # name - you're not really "cutting", just copying.
 
 DESCRIPTION
         The clipboard (or "selection", under some environments) is so

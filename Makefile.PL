@@ -5,8 +5,12 @@ abstract('Cliboard - Copy and Paste with any OS');
 license('perl');
 version_from('lib/Clipboard.pm');
 requires(qw(
-    Test::Chunks 0
+    Spiffy 0
     IO::All 0
 ));
+# This conditional requires is kind of wacky. It works from the command-line
+# "perl Makefile.PL" invocation just fine, but I am afeard that there's some
+# automated script out there that won't like it - cpan/cpanp?  We'll find out.
+requires('Win32::Clipboard') if $^O =~ /^win|cygwin/i;
 check_nmake();
 WriteAll();
