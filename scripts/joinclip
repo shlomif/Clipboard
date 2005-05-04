@@ -1,0 +1,7 @@
+#!/usr/bin/perl
+use Clipboard;
+use strict;
+my $data = join '', Clipboard->paste;
+$data =~ s/[ \n]+/ /gms;
+Clipboard->copy($data);
+print Clipboard->paste, "\n...is now in the Clipboard\n";

@@ -12,5 +12,6 @@ requires(qw(
 # "perl Makefile.PL" invocation just fine, but I am afeard that there's some
 # automated script out there that won't like it - cpan/cpanp?  We'll find out.
 requires('Win32::Clipboard') if $^O =~ /^win|cygwin/i;
+install_script('scripts/joinclip');
 check_nmake();
 WriteAll();

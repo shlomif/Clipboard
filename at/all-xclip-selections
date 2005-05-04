@@ -1,0 +1,9 @@
+#!/bin/bash
+all="$(perl -MClipboard -e 'print join " ", Clipboard::Xclip->all_selections')"
+for n in $all; do
+    echo "$n paste worked" | xclip -i -selection $n
+    perl -MClipboard -e 'print Clipboard->paste'
+    echo '' | xclip -i -selection $n
+done
+perl -MClipboard -e \
+    'Clipboard->copy("(default) copy worked\n"); print Clipboard->paste'

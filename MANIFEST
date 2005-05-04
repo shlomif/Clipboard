@@ -1,3 +1,4 @@
+at/all-xclip-selections
 at/run
 inc/Module/Install.pm
 inc/Module/Install/Base.pm
@@ -5,6 +6,7 @@ inc/Module/Install/Can.pm
 inc/Module/Install/Fetch.pm
 inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
+inc/Module/Install/Scripts.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 INSTALL
@@ -16,5 +18,6 @@ Makefile.PL
 MANIFEST			This list of files
 META.yml
 README
+scripts/joinclip
 t/drivers.t
 t/mock.t

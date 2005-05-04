@@ -4,7 +4,8 @@ use lib 'lib';
 use Clipboard;
 use IO::All;
 my $save = Clipboard->paste;
-print "Found: ", Clipboard->paste, "\n";
-Clipboard->copy('robot');
-print "Found: ", Clipboard->paste, "\n";
+print "Original: ", Clipboard->paste, "\n";
+Clipboard->copy('looks like Clipboard->copy works');
+print "     Now: ", Clipboard->paste, "\n";
 Clipboard->copy($save);
+print "(Restored original clipboard)\n"
