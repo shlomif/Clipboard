@@ -2,6 +2,9 @@ use Test::More 'no_plan'; use strict; use warnings;
 use lib 'lib'; # XXX
 my %map = qw(
     linux Xclip
+    freebsd Xclip
+    netbsd Xclip
+    openbsd Xclip
     Win32 Win32
     cygwin Win32
     MacOS Pb
