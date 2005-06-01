@@ -1,12 +1,23 @@
 #!/usr/bin/perl -w
 use strict;
 use Clipboard;
-my $browser = $ENV{BROWSER} || 'firefox';
-system($browser, Clipboard->paste);
+my $browser = $ENV{BROWSER} || 'firefox -remote "openURL(%s,new-tab)"';
+$browser .= ' %s' unless $browser =~ /%s/;
+system(sprintf $browser, Clipboard->paste);
 
 =head1 NAME
 
-browseclip - Load a URL from the clipboard into your browser.
+clipbrowse - Load a URL from the clipboard into your browser.
+
+=head1 USAGE
+
+# ...copy something
+# (You might want to do a `clipjoin` if the URL text is messy)
+$ clipbrowse
+
+Remember that many browsers will load things that don't look like URL's... for
+example Firefox does a Google "I'm feeling lucky".  This means you can have
+any text in your clipboard and `clipbrowse`.
 
 =head1 MOTIVATION
 
@@ -29,8 +40,11 @@ patch to Firefox, but for now this script puts the love on me just fine.
 
 =head1 CONFIGURATION
 
-The environment variable C<$BROWSER> will change from the default, which is
-"firefox".
+The environment variable C<$BROWSER> will override the default launching
+command.  If you have a %s in the line, it will be replaced with the url.  if
+not, the url will be appended at the end.
+
+The default is `firefox -remote "openURL(%s,new-tab)"`.
 
 =head1 AUTHOR
 

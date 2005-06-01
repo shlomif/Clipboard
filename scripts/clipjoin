@@ -2,13 +2,15 @@
 use Clipboard;
 use strict;
 my $data = join '', Clipboard->paste;
-$data =~ s/[ \n]+/ /gms;
+$data =~ s/^\+//gm;
+$data =~ s/\n//gms;
+$data =~ s/\s{2,}/ /g;
 Clipboard->copy($data);
 print Clipboard->paste, "\n...is now in the Clipboard\n";
 
 =head1 NAME
 
-joinclip - Remove superfluous spaces from the clipboard.
+clipjoin - Remove superfluous spaces from the clipboard.
 
 =head1 MOTIVATION
 
@@ -17,8 +19,8 @@ Often you'll copy some stuff, like this:
   <ingy> hey rking, you should use YBFOD: http://search.cpan
 .org/~ingy/Acme-YBFOD-0.11/
 
-And xterm puts a "\n" before that .org when it goes to your clipboard.  This
-script will cancel that.
+And xterm puts a "\n" before that ".org" when it goes to your clipboard.
+This script will cancel that.
 
 Another IRC example is longer quotes:
 
@@ -32,7 +34,20 @@ Another IRC example is longer quotes:
       yet favour to men of skill, but time and chance happeneth to them all.
 
 If you wanted to quote that to someone, you'd have \n's and "   "'s
-everywhere, unless you ran "joinclip" first.
+everywhere, unless you ran "clipjoin" first.
+
+An example from mutt:
+
+,-------------------------------------------.
+|  xterm                                (X) |
++-------------------------------------------+
+| http://www.thisisalink.com/that/wrapped/ar|
+|+ound/a/line/and/its/a/pain/without/the/joi|
+|+inclip/script                             |
+`-------------------------------------------'
+
+Becomes:
+http://www.thisisalink.com/that/wrapped/around/a/line/and/its/a/pain/without/the/clipjoin/script
 
 =head1 AUTHOR
 

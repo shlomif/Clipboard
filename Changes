@@ -1,0 +1,8 @@
+---
+version: 0.06
+date:    Wed Jun  1 11:30:37 PDT 2005
+changes:
+- `editclip`, sure to be a celebrated entry in the world of clipboard editing!
+- Renamed `joinclip` to `clipjoin`, and `browseclip` to `clipbrowse`.  Sorry
+  if you already are in the habit of typing the others (I still am).
+- `clipbrowse` now opens URLs into a new tab.

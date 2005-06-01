@@ -1,4 +1,6 @@
 #!/bin/bash
+# prove that Clipboard::Xclip will dig around through the selections until it
+# finds something.
 all="$(perl -MClipboard -e 'print join " ", Clipboard::Xclip->all_selections')"
 for n in $all; do
     echo "$n paste worked" | xclip -i -selection $n

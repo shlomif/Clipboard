@@ -1,6 +1,6 @@
 package Clipboard;
 use Spiffy -Base;
-our $VERSION = '0.04';
+our $VERSION = '0.06';
 our $driver;
 
 sub copy { $driver->copy(@_); }
@@ -31,22 +31,33 @@ Clipboard - Copy and paste with any OS
 
 =head1 SYNOPSIS
 
-    use Clipboard;
-    print Clipboard->paste;
-    Clipboard->copy($foo);
+use Clipboard;
+print Clipboard->paste;
+Clipboard->copy('foo');
 
-    # Clipboard->cut() is an alias for copy(), but the less-preferred
-    # name - you're not really "cutting", just copying.
+# Clipboard->cut() is an alias for copy().  copy() is the preferred
+# method, because we're not really "cutting" anything.
+
+Also see the scripts:
+    clipedit
+    clipjoin
+    clipbrowse
 
 =head1 DESCRIPTION
 
-    The clipboard (or "selection", under some environments) is so
-    useful.  If we get this working well, then it will also be trivial
-    to use from your Perl code.
+Who doesn't remember the first time they learned to copy and paste, and
+generated an exponentially growing text document?   Yes, that's right,
+clipboards are magical.
+
+With Clipboard.pm, this magic is now trivial to access,
+cross-platformly, from your Perl code.
 
 =head1 STATUS
-    
-    Very early.  Please help me get this running smoothly.
+
+Seems to be working well for Linux, OSX, *BSD, and Windows.  I use it
+every day on Linux, so I think I've got most of the details hammered out
+(X selections are kind of weird).  Please let me know if you encounter
+any problems in your setup.
 
 =head1 AUTHOR
 

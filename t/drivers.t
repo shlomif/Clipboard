@@ -17,5 +17,5 @@ ok(exists $INC{"Clipboard/$drv.pm"}, "Driver-check ($drv)");
 eval { Clipboard->find_driver('NonOS') };
 like($@, qr/is not yet supported/, 'find_driver correctly fails');
 
-is($Clipboard::driver, "Clipboard::$drv");
+is($Clipboard::driver, "Clipboard::$drv", "Actually loaded $drv");
 my $silence_stupid_warning = $Clipboard::driver;
