@@ -1,4 +1,9 @@
 ---
+version: 0.07
+date:    Thu Jun  2 00:10:26 PDT 2005
+changes:
+- fixed stupid typo in clipedit.  Not sure how I let this slip by me. =\
+---
 version: 0.06
 date:    Wed Jun  1 11:30:37 PDT 2005
 changes:

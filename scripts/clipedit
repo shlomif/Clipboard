@@ -35,7 +35,7 @@ if ($current ne $orig) {
 }
 Clipboard->copy($edited);
 print Clipboard->paste, "\n...is now in the Clipboard\n";
-io($tmpfile)->unlik;
+unlink($tmpfile) or die "Couldn't remove $tmpfile: $!";
 
 sub boldprint {
     # If you are in a situation where this output is annoying (such as in a
