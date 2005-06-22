@@ -1,6 +1,6 @@
 package Clipboard;
 use Spiffy -Base;
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 our $driver;
 
 sub copy { $driver->copy(@_); }
@@ -11,9 +11,14 @@ sub bind_os() { my $driver = shift; map { $_ => $driver } @_; }
 sub find_driver {
     my $os = shift;
     my %drivers = (
-        bind_os(Xclip => qw(linux bsd$)),
+        # list stolen from Module::Build, with some modifications (for
+        # example, cygwin doesn't count as Unix here, because it will
+        # use the Win32 clipboard.)
+        bind_os(Xclip => qw(linux bsd$ aix bsdos darwin dec_osf dgux
+            dynixptx hpux irix linux machten next os2 sco_sv solaris sunos
+            svr4 svr5 unicos unicosmk)),
         bind_os(Pb => qw(macos darwin)),
-        bind_os(Win32 => qw(^win cygwin)),
+        bind_os(Win32 => qw(mswin ^win cygwin)),
     );
     $os =~ /$_/i && return $drivers{$_} for keys %drivers;
     die "The $os system is not yet supported by Clipboard.pm.  Please email rking\@panoptic.com and tell him about this.\n";

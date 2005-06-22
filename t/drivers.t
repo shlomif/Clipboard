@@ -1,5 +1,5 @@
 use Test::More 'no_plan'; use strict; use warnings;
-use lib 'lib'; # XXX
+use lib 'lib';
 my %map = qw(
     linux Xclip
     freebsd Xclip
