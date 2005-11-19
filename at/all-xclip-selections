@@ -1,11 +1,15 @@
-#!/bin/bash
+#!/usr/bin/perl -w
 # prove that Clipboard::Xclip will dig around through the selections until it
 # finds something.
-all="$(perl -MClipboard -e 'print join " ", Clipboard::Xclip->all_selections')"
-for n in $all; do
-    echo "$n paste worked" | xclip -i -selection $n
-    perl -MClipboard -e 'print Clipboard->paste'
-    echo '' | xclip -i -selection $n
-done
-perl -MClipboard -e \
-    'Clipboard->copy("(default) copy worked\n"); print Clipboard->paste'
+use strict;
+use lib 'lib';
+use Clipboard;
+use Test::More 'no_plan';
+
+for (Clipboard::Xclip->all_selections) {
+    my $str = "$_ paste worked\n\nwith double-newlines, even.";
+    Clipboard::Xclip->copy_to_selection($_, $str);
+    my $actual = Clipboard->paste;
+    is $actual, $str, "$_ test";
+    Clipboard::Xclip->copy_to_selection($_, '');
+}

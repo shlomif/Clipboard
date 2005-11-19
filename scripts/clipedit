@@ -17,7 +17,7 @@ if ($current ne $orig) {
     print $current;
     boldprint("\n3) and you edited to this:\n");
     print $edited;
-    boldprint("\nWhich would you like to use? (1, 2, or 3) ");
+    boldprint("\nWhich would you like to use (1, 2, or the default, 3)? ");
     my %actions = (
         1 => $orig,
         2 => $current,
@@ -27,6 +27,7 @@ if ($current ne $orig) {
     while (1) {
         $answer = <STDIN>;
         chomp $answer;
+        $answer = 3 if $answer eq '';
         last if exists $actions{$answer};
         my @puzzles = qw(hrm what huh uhh who because sneevle);
         boldprint(ucfirst($puzzles[int rand $#puzzles]) . "? ");
@@ -34,7 +35,8 @@ if ($current ne $orig) {
     $edited = $actions{$answer};
 }
 Clipboard->copy($edited);
-print Clipboard->paste, "\n...is now in the Clipboard\n";
+print Clipboard->paste;
+boldprint("\n...is now in the Clipboard\n");
 unlink($tmpfile) or die "Couldn't remove $tmpfile: $!";
 
 sub boldprint {
@@ -55,7 +57,9 @@ Eliminating the "Open editor, edit stuff, copy back to the clipboard" shuffle.
 =head1 NOTE
 
 If for some reason the clipboard contents changes during the edit session, you
-will be prompted, so `clipedit` without fear.
+will be prompted to choose between 1) the original Clipboard contents, 2) the
+new Clipboard contents, and 3) the result of your edits (which is the default
+if you just hit "Enter").
 
 =head1 CONFIGURATION
 
@@ -64,7 +68,7 @@ environment variable C<$VISUAL> or C<$EDITOR>.
 
 =head1 AUTHOR
 
-Ryan King <rking@panoptic.com>
+Ryan King <rking@sharpsaw.org>
 
 =head1 COPYRIGHT
 

@@ -1,4 +1,14 @@
 ---
+version: 0.09
+date:    Thu Oct 20 09:30:45 CDT 2005
+changes:
+- Included Anton Berezin's Clipboard::Xclip fix for data that includes \n\n
+- Added scripts/clipfilter (also with Anton's feedback)
+- Removed dependency on IO::All
+- Cheated to make CPAN tests pass (turned 'xclip' dependency into warning).
+  The real fix here is probably to Inline::C it - the xclip source is not that
+  hard to read and pare down to a minimal set.
+---
 version: 0.08
 date:    Tue Jun 21 23:10:15 CDT 2005
 changes:

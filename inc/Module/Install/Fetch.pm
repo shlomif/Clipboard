@@ -1,4 +1,7 @@
-#line 1 "inc/Module/Install/Fetch.pm - /usr/local/share/perl/5.8.4/Module/Install/Fetch.pm"
+#line 1 "inc/Module/Install/Fetch.pm - /usr/share/perl5/Module/Install/Fetch.pm"
+# $File: //depot/cpan/Module-Install/lib/Module/Install/Fetch.pm $ $Author: autrijus $
+# $Revision: #8 $ $Change: 1374 $ $DateTime: 2003/03/18 11:50:15 $ vim: expandtab shiftwidth=4
+
 package Module::Install::Fetch;
 use Module::Install::Base; @ISA = qw(Module::Install::Base);
 

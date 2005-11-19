@@ -1,13 +1,12 @@
 name: Clipboard
-version: 0.08
+version: 0.09
 abstract: Cliboard - Copy and Paste with any OS
-author: Ryan King <rking@panoptic.com
+author: Ryan King <rking@sharpsaw.org
 license: perl
 distribution_type: module
 requires:
   Spiffy: 0
-  IO::All: 0
 no_index:
   directory:
     - inc
-generated_by: Module::Install version 0.36
+generated_by: Module::Install version 0.34

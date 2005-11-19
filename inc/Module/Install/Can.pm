@@ -1,4 +1,7 @@
-#line 1 "inc/Module/Install/Can.pm - /usr/local/share/perl/5.8.4/Module/Install/Can.pm"
+#line 1 "inc/Module/Install/Can.pm - /usr/share/perl5/Module/Install/Can.pm"
+# $File: //depot/cpan/Module-Install/lib/Module/Install/Can.pm $ $Author: autrijus $
+# $Revision: #6 $ $Change: 1840 $ $DateTime: 2003/12/28 19:42:02 $ vim: expandtab shiftwidth=4
+
 package Module::Install::Can;
 use Module::Install::Base; @ISA = qw(Module::Install::Base);
 $VERSION = '0.01';

@@ -1,12 +1,6 @@
-use Test::More 'no_plan'; use strict; use warnings;
-use lib 'lib'; # XXX
-use Clipboard;
-package PhonyClipboard;
-use Spiffy -Base;
-our $board = '';
-sub copy { $board = $_[0]; }
-sub paste { $board }
-package main;
+use Test::Clipboard;
+use Test::MockClipboard;
+use strict; # XXX make Test::Clipboard do this
 $Clipboard::driver = 'PhonyClipboard';
 my $str = 'Semirobotic Invasion';
 Clipboard->copy($str);

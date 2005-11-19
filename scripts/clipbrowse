@@ -48,8 +48,7 @@ The default is `firefox -remote "openURL(%s,new-tab)"`.
 
 =head1 AUTHOR
 
-Ryan King <rking@panoptic.com>
-
+Ryan King <rking@sharpsaw.org> 
 =head1 COPYRIGHT
 
 Copyright (c) 2005.  Ryan King.  All rights reserved.

@@ -1,6 +1,6 @@
 package Clipboard;
 use Spiffy -Base;
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 our $driver;
 
 sub copy { $driver->copy(@_); }
@@ -21,7 +21,7 @@ sub find_driver {
         bind_os(Win32 => qw(mswin ^win cygwin)),
     );
     $os =~ /$_/i && return $drivers{$_} for keys %drivers;
-    die "The $os system is not yet supported by Clipboard.pm.  Please email rking\@panoptic.com and tell him about this.\n";
+    die "The $os system is not yet supported by Clipboard.pm.  Please email rking\@sharpsaw.org and tell him about this.\n";
 }
 sub import {
     my $drv = Clipboard->find_driver($^O);
@@ -44,9 +44,11 @@ Clipboard->copy('foo');
 # method, because we're not really "cutting" anything.
 
 Also see the scripts:
-    clipedit
-    clipjoin
+    clipaccumulate
     clipbrowse
+    clipedit
+    clipfilter
+    clipjoin
 
 =head1 DESCRIPTION
 
@@ -66,7 +68,7 @@ any problems in your setup.
 
 =head1 AUTHOR
 
-Ryan King <rking@panoptic.com>
+Ryan King <rking@sharpsaw.org>
 
 =head1 COPYRIGHT
 
