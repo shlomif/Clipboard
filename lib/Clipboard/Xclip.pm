@@ -31,7 +31,7 @@ sub favorite_selection { ($self->all_selections)[0] }
 
 Can't find the 'xclip' script.  Clipboard.pm's X support depends on it.
 
-Here's the project homepage: http://freshmeat.net/projects/xclip
+Here's the project homepage: http://sourceforge.net/projects/xclip/
 
 EPIGRAPH
 }

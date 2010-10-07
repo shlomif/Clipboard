@@ -1,6 +1,6 @@
 package Clipboard;
 use Spiffy -Base;
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 our $driver;
 
 sub copy { $driver->copy(@_); }
@@ -21,7 +21,7 @@ sub find_driver {
         bind_os(Win32 => qw(mswin ^win cygwin)),
     );
     $os =~ /$_/i && return $drivers{$_} for keys %drivers;
-    die "The $os system is not yet supported by Clipboard.pm.  Please email rking\@sharpsaw.org and tell him about this.\n";
+    die "The $os system is not yet supported by Clipboard.pm.  Please email rking\@panoptic.com and tell him about this.\n";
 }
 sub import {
     my $drv = Clipboard->find_driver($^O);
@@ -40,8 +40,8 @@ use Clipboard;
 print Clipboard->paste;
 Clipboard->copy('foo');
 
-# Clipboard->cut() is an alias for copy().  copy() is the preferred
-# method, because we're not really "cutting" anything.
+Clipboard->cut() is an alias for copy(). copy() is the preferred
+method, because we're not really "cutting" anything.
 
 Also see the scripts:
     clipaccumulate
@@ -57,7 +57,7 @@ generated an exponentially growing text document?   Yes, that's right,
 clipboards are magical.
 
 With Clipboard.pm, this magic is now trivial to access,
-cross-platformly, from your Perl code.
+in a cross-platform-consistent API, from your Perl code.
 
 =head1 STATUS
 
@@ -68,11 +68,11 @@ any problems in your setup.
 
 =head1 AUTHOR
 
-Ryan King <rking@sharpsaw.org>
+Ryan King <rking@panoptic.com>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2005. Ryan King. All rights reserved.
+Copyright (c) 2010. Ryan King. All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

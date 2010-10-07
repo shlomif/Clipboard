@@ -45,20 +45,19 @@ anyone?)
 
 =head1 MOTIVATION
 
-Hard to explain.  I had a case where I wanted to make a bunch of small notes
-that included all these different bits of info.  Instead of jotting them down
-on a scrap of paper, I made this.
+Hard to explain.  I run into cases where I wanted to make a bunch of small
+notes that included all these different bits of info.  Instead of jotting them
+down on a scrap of paper, I made this.
 
-Let me know if it can be made better.  (Ok, I know it can be made better, but
-let me know /how/.  And stop being such a wiseacre.)
+Let me know how it can be made better.
 
 =head1 AUTHOR
 
-Ryan King <rking@sharpsaw.org>
+Ryan King <rking@panoptic.com>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2005.  Ryan King.  All rights reserved.
+Copyright (c) 2010.  Ryan King.  All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

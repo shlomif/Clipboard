@@ -40,9 +40,9 @@ boldprint("\n...is now in the Clipboard\n");
 unlink($tmpfile) or die "Couldn't remove $tmpfile: $!";
 
 sub boldprint {
-    # If you are in a situation where this output is annoying (such as in a
+    # If you are in a situation where this output is annoying, such as in a
     # DOS console without ANSI parsing, please send a patch.  For now, I'll
-    # just do the simplest thing:
+    # just do the simplest thing and print it every time:
     printf "\e[033m%s\e[0m", shift;
 }
 
@@ -68,11 +68,11 @@ environment variable C<$VISUAL> or C<$EDITOR>.
 
 =head1 AUTHOR
 
-Ryan King <rking@sharpsaw.org>
+Ryan King <rking@panoptic.com>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2005.  Ryan King.  All rights reserved.
+Copyright (c) 2010.  Ryan King.  All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

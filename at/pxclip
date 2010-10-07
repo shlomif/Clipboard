@@ -10,6 +10,6 @@ for n in primary secondary clipboard buffer; do
     xclip -o -selection $n
     echo
 done
-echo == Clipboard.pm ==
+echo == Clipboard.pm default ==
 perl -MClipboard -e "print Clipboard->paste"
 echo

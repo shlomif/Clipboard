@@ -1,4 +1,15 @@
 ---
+version: 0.10
+date:    Wed Oct  6 21:16:25 EDT 2010
+changes:
+- Correct recognition of Windows in Makefile.PL (Alexandr Ciornii)
+- Makefile.PL version update (Alexandr Ciornii)
+- clipjoin now escapes weechat-type mess, and also now has -q flag.
+- clipbrowse now defaults to chromium-browser.
+- added at/clipjoin-test and at/clipbrowse-test
+- Updating email address and copyright date.
+- Minor text updates here and there.
+---
 version: 0.09
 date:    Thu Oct 20 09:30:45 CDT 2005
 changes:

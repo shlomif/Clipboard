@@ -2,11 +2,13 @@
 use Clipboard;
 use strict;
 my $data = join '', Clipboard->paste;
+$data =~ s/\s+\|\s+//gm;
 $data =~ s/^\+//gm;
 $data =~ s/\n//gms;
 $data =~ s/\s{2,}/ /g;
 Clipboard->copy($data);
-print Clipboard->paste, "\n...is now in the Clipboard\n";
+print Clipboard->paste, "\n...is now in the Clipboard\n"
+    unless $ARGV[0] eq '-q';
 
 =head1 NAME
 
@@ -17,10 +19,9 @@ clipjoin - Remove superfluous spaces from the clipboard.
 Often you'll copy some stuff, like this:
 
   <ingy> hey rking, you should use YBFOD: http://search.cpan
-.org/~ingy/Acme-YBFOD-0.11/
+    | .org/~ingy/Acme-YBFOD-0.11/
 
-And xterm puts a "\n" before that ".org" when it goes to your clipboard.
-This script will cancel that.
+Getting that URL to a browser is tedious.
 
 Another IRC example is longer quotes:
 
@@ -51,11 +52,11 @@ http://www.thisisalink.com/that/wrapped/around/a/line/and/its/a/pain/without/the
 
 =head1 AUTHOR
 
-Ryan King <rking@sharpsaw.org>
+Ryan King <rking@panoptic.com>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2005.  Ryan King.  All rights reserved.
+Copyright (c) 2010.  Ryan King.  All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
