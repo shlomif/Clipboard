@@ -7,8 +7,8 @@ my %map = qw(
     openbsd Xclip
     Win32 Win32
     cygwin Win32
-    MacOS Pb
-    darwin Pb
+    MacOS MacPasteboard
+    darwin MacPasteboard
 );
 use_ok 'Clipboard';
 is(Clipboard->find_driver($_), $map{$_}, $_) for keys %map;

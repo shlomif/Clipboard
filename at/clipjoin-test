@@ -2,7 +2,7 @@
 use strict;
 use lib 'lib';
 use Clipboard;
-my $CJ = 'scripts/clipjoin';
+my $CJ = 'perl -Ilib scripts/clipjoin';
 print "# Using $CJ and $INC{'Clipboard.pm'}\n";
 my %tests = (
     "http://as\ndf.com" => 'http://asdf.com',

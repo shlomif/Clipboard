@@ -1,14 +1,14 @@
 package Clipboard;
-use Spiffy -Base;
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 our $driver;
 
-sub copy { $driver->copy(@_); }
+sub copy { my $self = shift; $driver->copy(@_); }
 sub cut { goto &copy }
-sub paste { $driver->paste(@_); }
+sub paste { my $self = shift; $driver->paste(@_); }
 
-sub bind_os() { my $driver = shift; map { $_ => $driver } @_; }
+sub bind_os { my $driver = shift; map { $_ => $driver } @_; }
 sub find_driver {
+    my $self = shift;
     my $os = shift;
     my %drivers = (
         # list stolen from Module::Build, with some modifications (for
@@ -17,13 +17,15 @@ sub find_driver {
         bind_os(Xclip => qw(linux bsd$ aix bsdos darwin dec_osf dgux
             dynixptx hpux irix linux machten next os2 sco_sv solaris sunos
             svr4 svr5 unicos unicosmk)),
-        bind_os(Pb => qw(macos darwin)),
+        bind_os(MacPasteboard => qw(macos darwin)),
         bind_os(Win32 => qw(mswin ^win cygwin)),
     );
     $os =~ /$_/i && return $drivers{$_} for keys %drivers;
     die "The $os system is not yet supported by Clipboard.pm.  Please email rking\@panoptic.com and tell him about this.\n";
 }
+
 sub import {
+    my $self = shift;
     my $drv = Clipboard->find_driver($^O);
     require "Clipboard/$drv.pm";
     $driver = "Clipboard::$drv";

@@ -1,14 +1,22 @@
 #!/usr/bin/perl
 use strict;
 use Clipboard;
-use IO::All;
+
 my $orig = Clipboard->paste;
-my $tmpfile = "/tmp/clipedit$$";
-io($tmpfile)->write($orig);
+
+my $tmpfilename = "/tmp/clipedit$$";
+open my $tmpfile, ">$tmpfilename" or die "Failure to open $tmpfilename: $!";
+print $tmpfile $orig;
+close $tmpfile;
+
 my $ed = $ENV{VISUAL} || $ENV{EDITOR} || 'vim';
-system($ed, $tmpfile);
-my $edited = io($tmpfile)->all;
+system($ed, $tmpfilename);
+
+open $tmpfile, $tmpfilename or die "Failure to open $tmpfilename: $!";
+my $edited = join '', <$tmpfile>;
+
 my $current = Clipboard->paste;
+
 if ($current ne $orig) {
     local $| = 1;
     boldprint("1) When you started, the Clipboard contained:\n");
@@ -37,7 +45,8 @@ if ($current ne $orig) {
 Clipboard->copy($edited);
 print Clipboard->paste;
 boldprint("\n...is now in the Clipboard\n");
-unlink($tmpfile) or die "Couldn't remove $tmpfile: $!";
+
+unlink($tmpfilename) or die "Couldn't remove $tmpfilename: $!";
 
 sub boldprint {
     # If you are in a situation where this output is annoying, such as in a

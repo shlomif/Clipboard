@@ -1,4 +1,12 @@
 ---
+version: 0.11
+date: Thu Oct  7 00:20:45 EDT 2010
+changes:
+- Removed dependency on IO::All, Spiffy and IO::Run (!)
+- Switched Mac from pbcopy shelling to Mac::Pasteboard (Tom Wyant)
+- Improved error handling of Xclip.pm
+- Added at/clipfilter-test
+---
 version: 0.10
 date:    Wed Oct  6 21:16:25 EDT 2010
 changes:

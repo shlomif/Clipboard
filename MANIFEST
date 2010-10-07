@@ -1,5 +1,7 @@
+at/all
 at/all-xclip-selections
 at/clipbrowse-test
+at/clipfilter-test
 at/clipjoin-test
 at/pxclip
 at/run
@@ -14,7 +16,7 @@ inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 INSTALL
 lib/Clipboard.pm
-lib/Clipboard/Pb.pm
+lib/Clipboard/MacPasteboard.pm
 lib/Clipboard/Win32.pm
 lib/Clipboard/Xclip.pm
 Makefile.PL

@@ -11,5 +11,5 @@ for n in primary secondary clipboard buffer; do
     echo
 done
 echo == Clipboard.pm default ==
-perl -MClipboard -e "print Clipboard->paste"
+perl -Ilib -MClipboard -e "print Clipboard->paste"
 echo

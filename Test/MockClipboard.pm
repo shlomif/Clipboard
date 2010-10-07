@@ -1,6 +1,6 @@
 package PhonyClipboard;
-use Spiffy -Base;
 our $board = '';
-sub copy { $board = $_[0]; }
-sub paste { $board }
+sub copy { my $self = shift; $board = $_[0]; }
+sub paste { my $self = shift; $board }
 $Clipboard::driver = 'PhonyClipboard';
+1;
