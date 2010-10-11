@@ -1,4 +1,9 @@
 ---
+version: 0.12
+date: Mon Oct 11 02:11:44 EDT 2010
+changes:
+- Just added 'dragonfly' OS to recognized list (as *nix type)
+---
 version: 0.11
 date: Thu Oct  7 00:20:45 EDT 2010
 changes:

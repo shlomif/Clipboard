@@ -5,6 +5,7 @@ my %map = qw(
     freebsd Xclip
     netbsd Xclip
     openbsd Xclip
+    dragonfly Xclip
     Win32 Win32
     cygwin Win32
     MacOS MacPasteboard
