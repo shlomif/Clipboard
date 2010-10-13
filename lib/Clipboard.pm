@@ -1,5 +1,5 @@
 package Clipboard;
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 our $driver;
 
 sub copy { my $self = shift; $driver->copy(@_); }
@@ -14,10 +14,10 @@ sub find_driver {
         # list stolen from Module::Build, with some modifications (for
         # example, cygwin doesn't count as Unix here, because it will
         # use the Win32 clipboard.)
-        bind_os(Xclip => qw(linux bsd$ aix bsdos darwin dec_osf dgux
+        bind_os(Xclip => qw(linux bsd$ aix bsdos dec_osf dgux
             dynixptx hpux irix dragonfly machten next os2 sco_sv solaris sunos
             svr4 svr5 unicos unicosmk)),
-        bind_os(MacPasteboard => qw(macos darwin)),
+        bind_os(MacPasteboard => qw(darwin)),
         bind_os(Win32 => qw(mswin ^win cygwin)),
     );
     $os =~ /$_/i && return $drivers{$_} for keys %drivers;

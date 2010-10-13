@@ -1,4 +1,9 @@
 ---
+version: 0.13
+date: Wed Oct 13 00:42:03 EDT 2010
+changes:
+- Tom Wyant's excellent Mac fixups
+---
 version: 0.12
 date: Mon Oct 11 02:11:44 EDT 2010
 changes:

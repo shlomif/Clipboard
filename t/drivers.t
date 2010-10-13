@@ -8,7 +8,6 @@ my %map = qw(
     dragonfly Xclip
     Win32 Win32
     cygwin Win32
-    MacOS MacPasteboard
     darwin MacPasteboard
 );
 use_ok 'Clipboard';
