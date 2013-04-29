@@ -27,9 +27,26 @@ sub find_driver {
             dynixptx gnu hpux irix dragonfly machten next os2 sco_sv solaris
             sunos svr4 svr5 unicos unicosmk)),
         bind_os(MacPasteboard => qw(darwin)),
-        bind_os(Win32 => qw(mswin ^win cygwin)),
     );
+
+    if ($os =~ /^(?:mswin|win|cygwin)/i) {
+        # If we are connected to windows through ssh, and xclip is
+        # available, use it.
+        if (exists $ENV{SSH_CONNECTION}) {
+            local $SIG{__WARN__} = sub {};
+            require Clipboard::Xclip;
+
+            return 'Xclip' if Clipboard::Xclip::xclip_available();
+        }
+
+        return 'Win32';
+    }
+
     $os =~ /$_/i && return $drivers{$_} for keys %drivers;
+
+    # use xclip on unknown OSes that seem to have a DISPLAY
+    return 'Xclip' if exists $ENV{DISPLAY};
+
     die "The $os system is not yet supported by Clipboard.pm.  Please email rking\@panoptic.com and tell him about this.\n";
 }
 
