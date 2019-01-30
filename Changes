@@ -1,6 +1,6 @@
 ---
 version: 0.16
-date: FILL IN
+date: Wed Jan 30 13:20:04 IST 2019
 changes:
 - Add support for Debian GNU/Hurd ( https://rt.cpan.org/Ticket/Display.html?id=116951 )
 - Fix https://rt.cpan.org/Ticket/Display.html?id=98435 ; CVE-2014-5509
