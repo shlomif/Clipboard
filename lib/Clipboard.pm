@@ -15,8 +15,8 @@ sub find_driver {
         # example, cygwin doesn't count as Unix here, because it will
         # use the Win32 clipboard.)
         bind_os(Xclip => qw(linux bsd$ aix bsdos dec_osf dgux
-            dynixptx hpux irix dragonfly machten next os2 sco_sv solaris sunos
-            svr4 svr5 unicos unicosmk)),
+            dynixptx gnu hpux irix dragonfly machten next os2 sco_sv solaris
+            sunos svr4 svr5 unicos unicosmk)),
         bind_os(MacPasteboard => qw(darwin)),
         bind_os(Win32 => qw(mswin ^win cygwin)),
     );
