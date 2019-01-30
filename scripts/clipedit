@@ -3,12 +3,12 @@
 # PODNAME: clipedit
 use strict;
 use Clipboard;
+use File::Temp qw( tempfile );
 
 my $orig = Clipboard->paste;
 
-my $tmpfilename = "/tmp/clipedit$$";
-open my $tmpfile, ">$tmpfilename" or die "Failure to open $tmpfilename: $!";
-print $tmpfile $orig;
+my ($tmpfile, $tmpfilename) = tempfile();
+print {$tmpfile} $orig;
 close $tmpfile;
 
 my $ed = $ENV{VISUAL} || $ENV{EDITOR} || 'vim';
