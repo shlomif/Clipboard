@@ -1,5 +1,8 @@
-#!/usr/bin/perl -w
+#!/usr/bin/perl
+
+# PODNAME: clipbrowse
 use strict;
+use warnings;
 use Clipboard;
 my $browser = $ENV{BROWSER} || 'chromium-browser "%s"';
 $browser .= ' %s' unless $browser =~ /%s/;
@@ -42,7 +45,7 @@ If you still use Firefox, consider: `firefox -remote "openURL(%s,new-tab)"'`.
 
 =head1 AUTHOR
 
-Ryan King <rking@panoptic.com> 
+Ryan King <rking@panoptic.com>
 =head1 COPYRIGHT
 
 Copyright (c) 2010.  Ryan King.  All rights reserved.

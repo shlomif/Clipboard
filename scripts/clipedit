@@ -1,4 +1,6 @@
 #!/usr/bin/perl
+
+# PODNAME: clipedit
 use strict;
 use Clipboard;
 

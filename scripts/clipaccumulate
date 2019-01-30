@@ -1,5 +1,8 @@
 #!/usr/bin/perl
+
+# PODNAME: clipaccumulate
 use strict;
+
 use Clipboard;
 my $END_STRING = 'endEndENDenDend';
 my $should_quit = 0;

@@ -1,5 +1,7 @@
 package Clipboard::Xclip;
+
 use Clipboard;
+
 sub copy {
     my $self = shift;
     my ($input) = @_;
@@ -16,7 +18,7 @@ sub copy_to_selection {
 sub paste {
     my $self = shift;
     for ($self->all_selections) {
-        my $data = $self->paste_from_selection($_); 
+        my $data = $self->paste_from_selection($_);
         return $data if length $data;
     }
     undef
@@ -42,3 +44,5 @@ Here's the project homepage: http://sourceforge.net/projects/xclip/
 
 EPIGRAPH
 }
+
+1;

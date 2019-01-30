@@ -1,5 +1,5 @@
 package Clipboard;
-our $VERSION = '0.13';
+
 our $driver;
 
 sub copy { my $self = shift; $driver->copy(@_); }
@@ -32,7 +32,7 @@ sub import {
 }
 
 1;
-=head1 NAME 
+=head1 NAME
 
 Clipboard - Copy and paste with any OS
 

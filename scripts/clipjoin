@@ -1,4 +1,6 @@
 #!/usr/bin/perl
+
+# PODNAME: clipjoin
 use Clipboard;
 use strict;
 my $data = join '', Clipboard->paste;

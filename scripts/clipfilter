@@ -1,5 +1,8 @@
 #!/usr/bin/perl
+
+# PODNAME: clipfilter
 use strict;
+use warnings;
 use Clipboard;
 my %methods = (
     -html => sub { require CGI; CGI::escapeHTML($_[0]) },
@@ -41,7 +44,7 @@ clipfilter - Run various conversions for your clipboard data.
     # (copy some stuff)
     $ clipfilter -html
     # (paste, with html entities substituted in)
-    
+
     # or URI-escaping:
     $ clipfilter -uri
 

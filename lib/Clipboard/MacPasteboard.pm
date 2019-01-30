@@ -1,5 +1,7 @@
 package Clipboard::MacPasteboard;
+
 use Mac::Pasteboard;
+
 our $board = Mac::Pasteboard->new();
 $board->set( missing_ok => 1 );
 sub copy {
@@ -11,3 +13,5 @@ sub paste {
     my $self = shift;
     return scalar $board->paste();
 }
+
+1;
