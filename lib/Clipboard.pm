@@ -1,5 +1,8 @@
 package Clipboard;
 
+use strict;
+use warnings;
+
 our $driver;
 
 sub copy { my $self = shift; $driver->copy(@_); }

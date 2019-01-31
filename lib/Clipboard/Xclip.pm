@@ -1,11 +1,14 @@
 package Clipboard::Xclip;
 
+use strict;
+use warnings;
+
 use Clipboard;
 
 sub copy {
     my $self = shift;
     my ($input) = @_;
-    $self->copy_to_selection($self->favorite_selection, $input);
+    return $self->copy_to_selection($self->favorite_selection, $input);
 }
 sub copy_to_selection {
     my $self = shift;
@@ -14,6 +17,8 @@ sub copy_to_selection {
     my $r = open my $exe, $cmd or die "Couldn't run `$cmd`: $!\n";
     print $exe $input;
     close $exe or die "Error closing `$cmd`: $!";
+
+    return;
 }
 sub paste {
     my $self = shift;
@@ -21,7 +26,7 @@ sub paste {
         my $data = $self->paste_from_selection($_);
         return $data if length $data;
     }
-    undef
+    return undef;
 }
 sub paste_from_selection {
     my $self = shift;

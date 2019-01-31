@@ -1,5 +1,8 @@
 package Clipboard::Win32;
 
+use strict;
+use warnings;
+
 use Win32::Clipboard;
 
 our $board = Win32::Clipboard();
@@ -9,7 +12,7 @@ sub copy {
 }
 sub paste {
     my $self = shift;
-    $board->Get();
+    return $board->Get();
 }
 
 1;

@@ -1,8 +1,11 @@
 #!/usr/bin/perl
 
+use strict;
+use warnings;
+
 # PODNAME: clipjoin
 use Clipboard;
-use strict;
+
 my $data = join '', Clipboard->paste;
 $data =~ s/\s+\|\s+//gm;
 $data =~ s/^\+//gm;

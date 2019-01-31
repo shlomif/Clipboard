@@ -1,5 +1,8 @@
 package Clipboard::MacPasteboard;
 
+use strict;
+use warnings;
+
 use Mac::Pasteboard;
 
 our $board = Mac::Pasteboard->new();

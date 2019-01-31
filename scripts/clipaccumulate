@@ -2,6 +2,7 @@
 
 # PODNAME: clipaccumulate
 use strict;
+use warnings;
 
 use Clipboard;
 my $END_STRING = 'endEndENDenDend';
