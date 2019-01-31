@@ -10,6 +10,16 @@ sub copy {
     my ($input) = @_;
     return $self->copy_to_selection($self->favorite_selection, $input);
 }
+
+sub copy_to_all_selections {
+    my $self = shift;
+    my ($input) = @_;
+    foreach my $sel ($self->all_selections) {
+        $self->copy_to_selection($sel, $input);
+    }
+    return;
+}
+
 sub copy_to_selection {
     my $self = shift;
     my ($selection, $input) = @_;

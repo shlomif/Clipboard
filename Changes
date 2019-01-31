@@ -1,5 +1,6 @@
 0.19    2019-01-31
 
+    - Add copy_to_all_selections().
     - Convert Changes to https://metacpan.org/pod/CPAN::Changes .
     - Code cleanups and modernisations.
 
