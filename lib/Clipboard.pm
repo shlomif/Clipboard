@@ -74,13 +74,6 @@ Clipboard - Copy and paste with any OS
 Clipboard->cut() is an alias for copy(). copy() is the preferred
 method, because we're not really "cutting" anything.
 
-Also see the scripts:
-    clipaccumulate
-    clipbrowse
-    clipedit
-    clipfilter
-    clipjoin
-
 =head1 DESCRIPTION
 
 Who doesn't remember the first time they learned to copy and paste, and
@@ -109,6 +102,11 @@ This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 
 See http://www.perl.com/perl/misc/Artistic.html
+
+=head1 SEE ALSO
+
+L<clipaccumulate(1)>, L<clipbrowse(1)>, L<clipedit(1)>,
+L<clipfilter(1)>, L<clipjoin(1)>
 
 =cut
 # vi:tw=72
