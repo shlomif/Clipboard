@@ -3,7 +3,7 @@ package Clipboard::MacPasteboard;
 use strict;
 use warnings;
 
-use Mac::Pasteboard;
+use Mac::Pasteboard 0.011;
 
 our $board = Mac::Pasteboard->new();
 $board->set( missing_ok => 1 );
