@@ -1,3 +1,7 @@
+0.25    2020-05-14
+    - Fix capitalization in GitHub links (the links still worked) in META.*
+        - A minor and cosmetic change
+
 0.24    2020-03-07
     - Remove Makefile.PL due to ::OSPrereqs not munging it along with Build.PL
         - https://github.com/dagolden/Dist-Zilla-Plugin-OSPrereqs/issues/4
