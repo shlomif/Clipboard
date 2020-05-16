@@ -25,7 +25,8 @@ sub copy_to_selection {
     my ($selection, $input) = @_;
     my $cmd = '|xclip -i -selection '. $selection;
     my $r = open my $exe, $cmd or die "Couldn't run `$cmd`: $!\n";
-    print $exe $input;
+    binmode $exe, ':encoding(UTF-8)';
+    print {$exe} $input;
     close $exe or die "Error closing `$cmd`: $!";
 
     return;
