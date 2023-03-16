@@ -23,6 +23,9 @@ sub find_driver {
         # list stolen from Module::Build, with some modifications (for
         # example, cygwin doesn't count as Unix here, because it will
         # use the Win32 clipboard.)
+        bind_os(Xsel => qw(linux bsd$ aix bsdos dec_osf dgux
+            dynixptx gnu hpux irix dragonfly machten next os2 sco_sv solaris
+            sunos svr4 svr5 unicos unicosmk)),
         bind_os(Xclip => qw(linux bsd$ aix bsdos dec_osf dgux
             dynixptx gnu hpux irix dragonfly machten next os2 sco_sv solaris
             sunos svr4 svr5 unicos unicosmk)),
@@ -34,8 +37,9 @@ sub find_driver {
         # available, use it.
         if (exists $ENV{SSH_CONNECTION}) {
             local $SIG{__WARN__} = sub {};
+            require Clipboard::Xsel;
+            return 'Xsel' if Clipboard::Xsel::xsel_available();
             require Clipboard::Xclip;
-
             return 'Xclip' if Clipboard::Xclip::xclip_available();
         }
 
@@ -44,8 +48,11 @@ sub find_driver {
 
     $os =~ /$_/i && return $drivers{$_} for keys %drivers;
 
-    # use xclip on unknown OSes that seem to have a DISPLAY
-    return 'Xclip' if exists $ENV{DISPLAY};
+    # use xsel/xclip on unknown OSes that seem to have a DISPLAY
+    require Clipboard::Xsel;
+    return 'Xsel' if exists $ENV{DISPLAY} and Clipboard::Xsel::xsel_available();
+    require Clipboard::Xclip;
+    return 'Xclip' if exists $ENV{DISPLAY} and Clipboard::Xclip::xclip_available();
 
     die "The $os system is not yet supported by Clipboard.pm.  Please email rking\@panoptic.com and tell him about this.\n";
 }
