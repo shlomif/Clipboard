@@ -1,4 +1,4 @@
-package Clipboard::Xclip;
+package Clipboard::Xsel;
 
 use strict;
 use warnings;
@@ -23,7 +23,7 @@ sub copy_to_all_selections {
 sub copy_to_selection {
     my $self = shift;
     my ($selection, $input) = @_;
-    my $cmd = '|xclip -i -selection '. $selection;
+    my $cmd = '|xsel -i --'. $selection;
     my $r = open my $exe, $cmd or die "Couldn't run `$cmd`: $!\n";
     binmode $exe, ':encoding(UTF-8)';
     print {$exe} $input;
@@ -42,7 +42,7 @@ sub paste {
 sub paste_from_selection {
     my $self = shift;
     my ($selection) = @_;
-    my $cmd = "xclip -o -selection $selection|";
+    my $cmd = "xsel -o --$selection|";
     open my $exe, $cmd or die "Couldn't run `$cmd`: $!\n";
     my $result = join '', <$exe>;
     close $exe or die "Error closing `$cmd`: $!";
@@ -52,13 +52,13 @@ sub paste_from_selection {
 sub all_selections { qw(primary buffer clipboard secondary) }
 sub favorite_selection { my $self = shift; ($self->all_selections)[0] }
 
-sub xclip_available {
+sub xsel_available {
     # close STDERR
     open my $olderr, '>&', \*STDERR;
     close STDERR;
     open STDERR, '>', File::Spec->devnull;
 
-    my $open_retval = open my $just_checking, 'xclip -o|';
+    my $open_retval = open my $just_checking, 'xsel -o|';
 
     # restore STDERR
     close STDERR;
@@ -69,11 +69,11 @@ sub xclip_available {
 }
 
 {
-  xclip_available() or warn <<'EPIGRAPH';
+  xsel_available() or warn <<'EPIGRAPH';
 
-Can't find the 'xclip' program.  Clipboard.pm's X support depends on it.
+Can't find the 'xsel' program.  Clipboard.pm's X support depends on it.
 
-Here's the project homepage: http://sourceforge.net/projects/xclip/
+Here's the project homepage: https://vergenet.net/~conrad/software/xsel/
 
 EPIGRAPH
 }
