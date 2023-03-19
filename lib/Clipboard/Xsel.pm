@@ -44,7 +44,7 @@ sub paste_from_selection {
     my ($selection) = @_;
     my $cmd = "xsel -o --$selection|";
     open my $exe, $cmd or die "Couldn't run `$cmd`: $!\n";
-    my $result = join '', <$exe>;
+    my $result = do { local $/; <$exe> };
     close $exe or die "Error closing `$cmd`: $!";
     return $result;
 }
