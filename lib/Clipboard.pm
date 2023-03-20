@@ -5,7 +5,7 @@ use warnings;
 
 our $driver;
 
-sub copy { my $self = shift; $driver->copy(@_); }
+sub copy { my $self = shift; return $driver->copy(@_); }
 sub copy_to_all_selections {
     my $self = shift;
     my $meth = $driver->can('copy_to_all_selections');
@@ -13,9 +13,9 @@ sub copy_to_all_selections {
 }
 
 sub cut { goto &copy }
-sub paste { my $self = shift; $driver->paste(@_); }
+sub paste { my $self = shift; return $driver->paste(@_); }
 
-sub bind_os { my $driver = shift; map { $_ => $driver } @_; }
+sub bind_os { my $driver = shift; return map { $_ => $driver } @_; }
 sub find_driver {
     my $self = shift;
     my $os = shift;
@@ -45,9 +45,13 @@ sub find_driver {
 
         return 'Win32';
     }
-
-    $os =~ /$_/i && return $drivers{$_} for keys %drivers;
-
+    foreach my $d (sort keys %drivers)
+    {
+        if ($os =~ /$d/i)
+        {
+            return $drivers{$d};
+        }
+    }
     # use xsel/xclip on unknown OSes that seem to have a DISPLAY
     if (exists($ENV{DISPLAY}))
     {
@@ -65,6 +69,7 @@ sub import {
     my $drv = Clipboard->find_driver($^O);
     require "Clipboard/$drv.pm";
     $driver = "Clipboard::$drv";
+    return;
 }
 
 1;
