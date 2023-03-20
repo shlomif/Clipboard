@@ -49,10 +49,13 @@ sub find_driver {
     $os =~ /$_/i && return $drivers{$_} for keys %drivers;
 
     # use xsel/xclip on unknown OSes that seem to have a DISPLAY
-    require Clipboard::Xsel;
-    return 'Xsel' if exists $ENV{DISPLAY} and Clipboard::Xsel::xsel_available();
-    require Clipboard::Xclip;
-    return 'Xclip' if exists $ENV{DISPLAY} and Clipboard::Xclip::xclip_available();
+    if (exists($ENV{DISPLAY}))
+    {
+        require Clipboard::Xsel;
+        return 'Xsel' if Clipboard::Xsel::xsel_available();
+        require Clipboard::Xclip;
+        return 'Xclip' if Clipboard::Xclip::xclip_available();
+    }
 
     die "The $os system is not yet supported by Clipboard.pm.  Please email rking\@panoptic.com and tell him about this.\n";
 }
