@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use Clipboard;
 my $browser = $ENV{BROWSER} || 'chromium-browser "%s"';
-$browser .= ' %s' unless $browser =~ /%s/;
+$browser .= ' "%s"' unless $browser =~ /%s/;
 my $query = Clipboard->paste;
 $query =~ s/['"]/\\$&/;
 system(sprintf $browser, $query);
