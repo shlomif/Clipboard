@@ -35,11 +35,15 @@ eval {
 };
 like($@, qr/is not yet supported/, 'find_driver correctly fails with no DISPLAY');
 
-my $display_drv = do {
-    local %ENV = %ENV;
-    $ENV{DISPLAY} = ':0.0';
-    Clipboard->find_driver('NonOS')
-};
-is $display_drv, 'Xsel', 'driver is Xclip on unknown OS with DISPLAY set';
-is($Clipboard::driver, "Clipboard::$drv", "Actually loaded $drv");
-my $silence_stupid_warning = $Clipboard::driver;
+SKIP: {
+    $ENV{AUTHOR_TESTING}
+	or skip 'Author test', 2;
+    my $display_drv = do {
+	local %ENV = %ENV;
+	$ENV{DISPLAY} = ':0.0';
+	Clipboard->find_driver('NonOS')
+    };
+    is $display_drv, 'Xsel', 'driver is Xclip on unknown OS with DISPLAY set';
+    is($Clipboard::driver, "Clipboard::$drv", "Actually loaded $drv");
+    my $silence_stupid_warning = $Clipboard::driver;
+}
