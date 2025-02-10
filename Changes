@@ -1,6 +1,7 @@
 0.32    2025-02-10
 
     - In drivers.t: prefer to use Clipboard::WaylandClipboard .
+        - https://github.com/shlomif/Clipboard/issues/13
         - Thanks to @hightowe
 
 0.31    2025-01-21
